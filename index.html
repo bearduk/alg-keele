@@ -15,7 +15,15 @@
 <body>
 	<img src="https://www.keele.ac.uk/media/keeleuniversity/styleassets/images/logo.png" alt="Keele University" title="Keele University">
 	<p>Proof of concept</p>
-	<p>Switch to yarn and package control for final build</p>
+	<p>Switch to yarn and package control etc for final build</p>
+
+
+<div id="current-refined-values">
+  <!-- CurrentRefinedValues widget will appear here -->
+</div>
+<div id="clear-all">
+  <!-- ClearAll widget will appear here -->
+</div>
 
 
 <div id="search-box">
@@ -27,22 +35,56 @@
 <div id="hits">
   <!-- Hits widget will appear here -->
 </div>
-
+<div id="pagination">
+  <!-- Pagination widget will appear here -->
+</div>
 
 <!-- configure the app -->
 <script>
 const search = instantsearch({
-  appId: 'latency',
-  apiKey: '3d9875e51fbd20c7754e65422f7ce5e1',
-  indexName: 'bestbuy',
+  appId: 'HT7VYJG3KU',
+  apiKey: 'd37bbf3291b226676c9f3f1937e865d3',
+  indexName: 'dev_COURSES',
   urlSync: true
 });
+
+  // initialize currentRefinedValues
+  search.addWidget(
+    instantsearch.widgets.currentRefinedValues({
+      container: '#current-refined-values',
+      // This widget can also contain a clear all link to remove all filters,
+      // we disable it in this example since we use `clearAll` widget on its own.
+      clearAll: false
+    })
+  );
+
+  // initialize clearAll
+  search.addWidget(
+    instantsearch.widgets.clearAll({
+      container: '#clear-all',
+      templates: {
+        link: 'Reset everything'
+      },
+      autoHideContainer: false
+    })
+  );
+
+  // initialize pagination
+  search.addWidget(
+    instantsearch.widgets.pagination({
+      container: '#pagination',
+      maxPages: 20,
+      // default is to scroll to 'body', here we disable this behavior
+      scrollTo: false
+    })
+  );
+
 
   // initialize RefinementList
   search.addWidget(
     instantsearch.widgets.refinementList({
       container: '#refinement-list',
-      attributeName: 'category'
+      attributeName: 'courseLevel'
     })
   );
 
@@ -50,7 +92,7 @@ const search = instantsearch({
   search.addWidget(
     instantsearch.widgets.searchBox({
       container: '#search-box',
-      placeholder: 'Search for products'
+      placeholder: 'Search for a course'
     })
   );
 
@@ -67,7 +109,7 @@ search.addWidget(
       container: '#hits',
       templates: {
         empty: 'No results',
-        item: '<em>Hit {{objectID}}</em>: {{{_highlightResult.name.value}}}'
+        item: '<em>Hit {{objectID}}</em>: {{{_highlightResult.courseTitle.value}}}'
       }
     })
   );
