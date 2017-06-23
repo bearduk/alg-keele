@@ -33,6 +33,12 @@
 		@media screen and (max-width: 768px) {
     		body { padding-top: 70px; }
 }
+  .course-level {
+  border: 1px solid #e0e0e0;
+  padding: 3px 5px;
+  text-align: center;
+  text-transform: uppercase;
+  }
 	</style>
 
 
@@ -79,6 +85,10 @@
 <div id="refinement-list">
   <!-- RefinementList widget will appear here -->
 </div>
+<hr />
+<div id="current-refined-values-duration">
+  <!-- RefinementLIst 2 for duration UG -->
+</div>
 <div id="hits">
   <!-- Hits widget will appear here -->
 </div>
@@ -116,6 +126,7 @@ const search = instantsearch({
     })
   );
 
+
   // initialize clearAll
   search.addWidget(
     instantsearch.widgets.clearAll({
@@ -146,6 +157,17 @@ const search = instantsearch({
     })
   );
 
+
+  // initialize RefinementList
+  search.addWidget(
+    instantsearch.widgets.refinementList({
+      container: '#current-refined-values-duration',
+      attributeName: 'duration'
+    })
+  );
+
+
+
   // initialize SearchBox
   search.addWidget(
     instantsearch.widgets.searchBox({
@@ -167,7 +189,7 @@ search.addWidget(
       container: '#hits',
       templates: {
         empty: 'No results',
-        item: 'Hit {{ objectID }}: <a href="https://www.keele.ac.uk{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a>'
+        item: 'Hit {{ objectID }}: <a href="https://www.keele.ac.uk{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a> <span class="course-level">{{courseLevel}}</span>'
       }
     })
   );
