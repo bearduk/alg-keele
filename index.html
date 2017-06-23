@@ -39,6 +39,9 @@
   text-align: center;
   text-transform: uppercase;
   }
+  .course-result{
+    margin-bottom: 4px;
+  }
 	</style>
 
 
@@ -190,7 +193,7 @@ search.addWidget(
       container: '#hits',
       templates: {
         empty: 'No results',
-        item: '<!-- Hit {{ objectID }}: --><a href="https://www.keele.ac.uk{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a> <span class="course-level">{{courseLevel}}</span>'
+        item: '<div class="course-result"><!-- Hit {{ objectID }}: --><a href="https://www.keele.ac.uk{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a> <span class="course-level">{{courseLevel}}</span></div>'
       }
     })
   );
