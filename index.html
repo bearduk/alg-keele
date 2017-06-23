@@ -70,6 +70,11 @@
 <div id="search-box">
   <!-- SearchBox widget will appear here -->
 </div>
+
+<div id="stats-container">
+  <!-- Metadata Stats -->	
+</div>
+
 <div id="refinement-list">
   <!-- RefinementList widget will appear here -->
 </div>
@@ -166,6 +171,12 @@ search.addWidget(
     })
   );
 
+// add a stats counter
+search.addWidget(
+  instantsearch.widgets.stats({
+    container: '#stats-container'
+  })
+);
 search.start();
 </script>
 
