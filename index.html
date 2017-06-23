@@ -85,10 +85,11 @@
 <div id="refinement-list">
   <!-- RefinementList widget will appear here -->
 </div>
-<hr />
-<div id="current-refined-values-duration">
+
+<!--  TOO MANY DURATION options so taking this out-->
+<!-- <div id="current-refined-values-duration"> -->
   <!-- RefinementLIst 2 for duration UG -->
-</div>
+<!-- </div> -->
 <div id="hits">
   <!-- Hits widget will appear here -->
 </div>
@@ -157,14 +158,14 @@ const search = instantsearch({
     })
   );
 
-
+// TOO MANY DURATION options so taking this out
   // initialize RefinementList
-  search.addWidget(
-    instantsearch.widgets.refinementList({
-      container: '#current-refined-values-duration',
-      attributeName: 'duration'
-    })
-  );
+  // search.addWidget(
+  //  instantsearch.widgets.refinementList({
+  //    container: '#current-refined-values-duration',
+  //    attributeName: 'duration'
+  //  })
+  // );
 
 
 
@@ -189,7 +190,7 @@ search.addWidget(
       container: '#hits',
       templates: {
         empty: 'No results',
-        item: 'Hit {{ objectID }}: <a href="https://www.keele.ac.uk{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a> <span class="course-level">{{courseLevel}}</span>'
+        item: '<!-- Hit {{ objectID }}: --><a href="https://www.keele.ac.uk{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a> <span class="course-level">{{courseLevel}}</span>'
       }
     })
   );
