@@ -193,7 +193,7 @@ search.addWidget(
       container: '#hits',
       templates: {
         empty: 'No results',
-        item: '<div class="course-result"><!-- Hit {{ objectID }}: --><a href="https://www.keele.ac.uk{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a> <span class="course-level">{{courseLevel}}</span></div>'
+        item: '<div class="course-result"><!-- Hit {{ objectID }}: --><a href="{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a> <span class="course-level">{{courseLevel}}</span></div>'
       }
     })
   );
