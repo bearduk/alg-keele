@@ -159,6 +159,7 @@ const search = instantsearch({
     instantsearch.widgets.refinementList({
       container: '#refinement-list',
       attributeName: 'courseLevel'
+      // sortBy: ["name:desc"] For facets only, not results
     })
   );
 
@@ -193,7 +194,7 @@ search.addWidget(
     instantsearch.widgets.hits({
       container: '#hits',
       templates: {
-        empty: 'No results',
+        empty: 'No courses found',
         item: '<div class="course-result"><!-- Hit {{ objectID }}: --><a href="{{ urlPath }}">{{{ _highlightResult.courseTitle.value }}}</a> <span class="course-level">{{courseLevel}}</span></div>'
       }
     })
